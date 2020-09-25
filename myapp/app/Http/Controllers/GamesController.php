@@ -23,4 +23,34 @@ class GamesController extends Controller
         $games = $query->orderBy('id','desc')->paginate(10);
         return view('games.index', compact('games', 'keyword'));
     }
+
+    public function create()
+    {
+        return view('games.create');
+    }
+
+    public function store(Request $request)
+    {
+        // if ($request->file('image')->isValid()) {
+        //     // file upload
+        //     $fileName = $request->file('image')->getClientOriginalName();
+        //     $request->file('image')->storeAs('public/postImages',$fileName);
+
+        //     $fullFilePath = '/storage/postImages/'.$fileName;
+        //     $name = $request->name;
+
+        //     Game::create([
+        //     //   'user_id'     => \Auth::user()->id,
+        //       'name' => $name,
+        //       'image' => $fullFilePath
+        //     ]);
+        // }
+
+        $game = new Game;
+        $game->name = $request->name;
+
+        $game->save();
+        return redirect('/games')->with('flash', 'ゲームを作成しました。');
+    }
+
 }

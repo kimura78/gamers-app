@@ -18,3 +18,8 @@ Auth::routes();
 
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/games', [GamesController::class, 'index']);
+
+Route::group(['middleware' => ['auth']], function() {
+  Route::get('/games/create', [GamesController::class, 'create']);
+  Route::post('games', [GamesController::class, 'store']);
+});
