@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\GamesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,11 +14,16 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [HomeController::class, 'index']);
+Route::get('/games', [GamesController::class, 'index']);
+Route::get('/games/{game}', [GamesController::class, 'show']);
+
+Route::group(['middleware' => ['auth']], function() {
+  Route::get('/games/create', [GamesController::class, 'create']);
+  Route::post('/games', [GamesController::class, 'store']);
+  Route::get('/games/{game}/edit', [GamesController::class, 'edit']);
+  Route::patch('/games/{game}', [GamesController::class, 'update']);
+  Route::delete('/games/{game}', [GamesController::class, 'destroy']);
+});
