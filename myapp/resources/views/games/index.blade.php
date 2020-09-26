@@ -27,9 +27,6 @@
       <div class="post-image">
         <img src="{{ $game->image }}" width="30%"/>
       </div>
-      {{-- <img src="{{ asset('storage/'.$game->image) }}"> --}}
-      {{-- <a href="/game/{{$game->id}}/edit">編集する</a> --}}
-        {{-- <a href="/games/{{$game->id}}">削除する</a> --}}
       <hr>
     @endforeach
   </div>
