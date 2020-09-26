@@ -15,7 +15,7 @@
 
 			<p class="mt-3">ゲームをプレイする仲間を募集しましょう！</p>
 			
-      <a class="btn btn-outline-secondary" href="/game">ゲームを検索</a>
+      <a class="btn btn-outline-secondary" href="/games">ゲームを検索</a>
     </div>
 	</div>
 @endsection

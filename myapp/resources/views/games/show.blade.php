@@ -27,8 +27,7 @@
   </div>
 
 
-  <button class="btn btn-outline-secondary btn-sm ml-2 mr-2" href="/game/{{$game->id}}/edit">ゲーム情報を編集する</button>
-
+  <a class="btn btn-outline-secondary btn-sm ml-2 mr-2" href="/games/{{$game->id}}/edit">ゲーム情報を編集する</a>
   <form action="/game/{{$game->id}}" method="post">
     {{ csrf_field() }}
     <input type="hidden" name="_method" value="delete">

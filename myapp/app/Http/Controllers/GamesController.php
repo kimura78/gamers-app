@@ -65,4 +65,33 @@ class GamesController extends Controller
         return view('games.show', ['game' => Game::findOrFail($id)], compact('tweets'));
     }
 
+    public function edit($id)
+    {
+      $game = Game::findOrFail($id);
+
+      return view('games/edit', compact('game'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        // if ($request->file('image')->isValid()) {
+
+        //     $fileName = $request->file('image')->getClientOriginalName();
+        //     $request->file('image')->storeAs('public/gameImages',$fileName);
+
+        //     $fullFilePath = '/storage/gameImages/'.$fileName;
+        //     $name = $request->name;
+
+        //     Game::create([
+        //     //   'user_id' => \Auth::user()->id,
+        //       'name' => $name,
+        //       'image' => $fullFilePath
+        //     ]);
+        // }
+        $game = Game::findOrFail($id);
+        $game->name = $request->name;
+        $game->save();
+
+        return redirect("/games")->with('flash', 'ゲームを更新しました。');
+    }
 }

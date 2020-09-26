@@ -22,5 +22,8 @@ Route::get('/games/{game}', [GamesController::class, 'show']);
 
 Route::group(['middleware' => ['auth']], function() {
   Route::get('/games/create', [GamesController::class, 'create']);
-  Route::post('games', [GamesController::class, 'store']);
+  Route::post('/games', [GamesController::class, 'store']);
+  Route::get('/games/{game}/edit', [GamesController::class, 'edit']);
+  Route::patch('/games/{game}', [GamesController::class, 'update']);
+  Route::delete('/games/{game}', [GamesController::class, 'destroy']);
 });
