@@ -18,7 +18,7 @@ Auth::routes();
 
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/games', [GamesController::class, 'index']);
-Route::get('/games/{game}', [GamesController::class, 'show']);
+// Route::get('/games/{game}', [GamesController::class, 'show']);
 
 Route::group(['middleware' => ['auth']], function() {
   Route::get('/games/create', [GamesController::class, 'create']);
