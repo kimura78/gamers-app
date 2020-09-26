@@ -52,4 +52,17 @@ class GamesController extends Controller
         return redirect('/games')->with('flash', 'ゲームを作成しました。');
     }
 
+    public function show($id)
+    {
+        $twitter = new TwitterOAuth(env('TWITTER_CLIENT_KEY'),
+        env('TWITTER_CLIENT_SECRET'),
+        env('TWITTER_CLIENT_ID_ACCESS_TOKEN'),
+        env('TWITTER_CLIENT_ID_ACCESS_TOKEN_SECRET'));
+
+        $tweets_params = ['q' => Game::findOrFail($id)->name ,'count' => '10'];
+        $tweets = $twitter->get('search/tweets', $tweets_params)->statuses;
+
+        return view('games.show', ['game' => Game::findOrFail($id)], compact('tweets'));
+    }
+
 }
