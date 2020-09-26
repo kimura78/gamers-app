@@ -22,16 +22,14 @@
             </div>
           </div>
         @endforeach
-
     </div>
+
+    <a class="btn btn-outline-secondary btn-sm ml-2 mr-2" href="/games/{{$game->id}}/edit">ゲーム情報を編集する</a>
+    
+    <form action="/games/{{$game->id}}" method="post">
+      {{ csrf_field() }}
+      <input type="hidden" name="_method" value="delete">
+      <button type="submit" class="btn btn-outline-danger btn-sm">このゲーム情報を削除する</button>
+    </form>
   </div>
-
-
-  <a class="btn btn-outline-secondary btn-sm ml-2 mr-2" href="/games/{{$game->id}}/edit">ゲーム情報を編集する</a>
-  <form action="/game/{{$game->id}}" method="post">
-    {{ csrf_field() }}
-    <input type="hidden" name="_method" value="delete">
-    <button type="submit" class="btn btn-outline-danger btn-sm">このゲーム情報を削除する</button>
-  </form>
-
 @endsection

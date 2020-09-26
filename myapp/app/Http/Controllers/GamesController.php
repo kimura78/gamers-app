@@ -94,4 +94,12 @@ class GamesController extends Controller
 
         return redirect("/games")->with('flash', 'ゲームを更新しました。');
     }
+
+    public function destroy($id)
+    {
+        $game = Game::findOrFail($id);
+        $game->delete();
+
+        return redirect("/games")->with('flash', 'ゲームを削除しました。');
+    }
 }
