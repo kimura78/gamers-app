@@ -35,4 +35,21 @@ class RecruitmentsController extends Controller
     {
         return view('recruitments.show', ['recruitment' => Recruitment::findOrFail($id)]);
     }
+
+    public function edit($id)
+    {
+      $recruitment = Recruitment::findOrFail($id);
+      return view('recruitments.edit', compact('recruitment'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $recruitment = Recruitment::findOrFail($id);
+        $recruitment->title = $request->title;
+        $recruitment->start_time = $request->start_time;
+
+        $recruitment->save();
+
+        return view('recruitments.show', ['recruitment' => Recruitment::findOrFail($id)])->with('flash', 'プレイ募集を編集しました。');
+    }
 }

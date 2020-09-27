@@ -22,16 +22,16 @@ Route::get('/games', [GamesController::class, 'index']);
 Route::get('/game/{game}', [GamesController::class, 'show']);
 Route::get('/recruitment/{recruitment}', [RecruitmentsController::class, 'show']);
 
-
-
 Route::group(['middleware' => ['auth']], function() {
   Route::get('/games/create', [GamesController::class, 'create']);
   Route::post('/games', [GamesController::class, 'store']);
-  Route::get('/games/{game}/edit', [GamesController::class, 'edit']);
+  Route::get('/game/{game}/edit', [GamesController::class, 'edit']);
   Route::patch('/games/{game}', [GamesController::class, 'update']);
   Route::delete('/games/{game}', [GamesController::class, 'destroy']);
 
   Route::get('/game/{game}/recruitments/create', [RecruitmentsController::class, 'create']);
   Route::post('/recruitments', [RecruitmentsController::class, 'store']);
+  Route::get('/recruitment/{recruitment}/edit', [RecruitmentsController::class, 'edit']);
+  Route::patch('/recruitments/{recruitment}', [RecruitmentsController::class, 'update']);
 
 });

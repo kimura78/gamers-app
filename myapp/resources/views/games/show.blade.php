@@ -14,7 +14,7 @@
     <div class="recruitment">
       <h5>
         <i class="fas fa-hands-helping text-danger"></i>
-        <a href='/game/{{$game->id}}/recruitment/create'>募集を作成する</a>
+        <a href='/game/{{$game->id}}/recruitments/create'>募集を作成する</a>
       </h5>
       
       @foreach ($recruitments as $recruitment)
@@ -45,7 +45,7 @@
         @endforeach
     </div>
 
-    <a class="btn btn-outline-secondary btn-sm ml-2 mr-2" href="/games/{{$game->id}}/edit">ゲーム情報を編集する</a>
+    <a class="btn btn-outline-secondary btn-sm ml-2 mr-2" href="/game/{{$game->id}}/edit">ゲーム情報を編集する</a>
     
     <form action="/games/{{$game->id}}" method="post">
       {{ csrf_field() }}
