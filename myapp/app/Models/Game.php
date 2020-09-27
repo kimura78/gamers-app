@@ -18,4 +18,8 @@ class Game extends Model
     public function recruitments() {
         return $this->hasMany('App\Recruitment');
     }
+
+    public function bookmarks() {
+        return $this->hasMany('App\Bookmark');
+    }
 }

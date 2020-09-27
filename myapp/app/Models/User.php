@@ -44,4 +44,8 @@ class User extends Authenticatable
     public function recruitments() {
         return $this->hasMany('App\Models\Recruitment');
     }
+
+    public function bookmarks() {
+        return $this->hasMany('App\Bookmark');
+    }
 }
