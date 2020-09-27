@@ -11,6 +11,27 @@
       <img src="{{ $game->image }}" width="30%" class="rounded-circle">
     </div>
 
+    <div class="recruitment">
+      <h5>
+        <i class="fas fa-hands-helping text-danger"></i>
+        <a href='/game/{{$game->id}}/recruitments/create'>募集を作成する</a>
+      </h5>
+      
+      @foreach ($recruitments as $recruitment)
+        <div class="card">
+          <div class="card-body">
+            <h5>
+              <i class="fas fa-hands-helping text-danger"></i>
+              <a href="/recruitment/{{$recruitment->id}}">{{$recruitment->title}}</a>
+            </h5>
+            <p>日時：{{$recruitment->start_time}}</p>
+            <p>投稿者：{{ $recruitment->user->name}}</p>
+          </div>
+        </div>
+        <br>
+      @endforeach
+    </div>
+
     <div class="tweets text-center">
       <h5><i class="fab fa-twitter mr-2 text-primary"></i>このゲームに関するツイート</h5>
 
@@ -24,7 +45,7 @@
         @endforeach
     </div>
 
-    <a class="btn btn-outline-secondary btn-sm ml-2 mr-2" href="/games/{{$game->id}}/edit">ゲーム情報を編集する</a>
+    <a class="btn btn-outline-secondary btn-sm ml-2 mr-2" href="/game/{{$game->id}}/edit">ゲーム情報を編集する</a>
     
     <form action="/games/{{$game->id}}" method="post">
       {{ csrf_field() }}

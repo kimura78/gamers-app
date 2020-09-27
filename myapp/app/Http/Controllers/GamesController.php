@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Game;
-// use App\Recruitment;
+use App\Models\Recruitment;
 use Abraham\TwitterOAuth\TwitterOAuth;
 
 class GamesController extends Controller
@@ -62,7 +62,8 @@ class GamesController extends Controller
         $tweets_params = ['q' => Game::findOrFail($id)->name ,'count' => '10'];
         $tweets = $twitter->get('search/tweets', $tweets_params)->statuses;
 
-        return view('games.show', ['game' => Game::findOrFail($id)], compact('tweets'));
+        $recruitments = Recruitment::where('game_id', $id)->get();
+        return view('games.show', ['game' => Game::findOrFail($id)], compact('recruitments', 'tweets'));
     }
 
     public function edit($id)

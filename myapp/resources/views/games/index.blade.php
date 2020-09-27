@@ -23,7 +23,7 @@
     <br><br>
       
     @foreach ($games as $game)
-      <h4><a href="/games/{{$game->id}}">{{$game->name}}</a></h4>
+      <h4><a href="/game/{{$game->id}}">{{$game->name}}</a></h4>
       <div class="post-image">
         <img src="{{ $game->image }}" width="30%"/>
       </div>

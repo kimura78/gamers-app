@@ -14,19 +14,9 @@
   
       <div class="form-group row">
         <div class="col-md-12">
-            <input type="file" name="image" accept="image/jpeg,image/gif,image/png">
+            <input type="file" name="image" accept="image/jpeg,image/gif,image/png" required>
         </div>
-      </div>
-  
-      
-      <!-- <div class="col-md-4 mb-3">
-        <label for="validationServer01">名前</label>
-        <input type="text" class="form-control is-valid" id="validationServer01" placeholder="ゲーム名を入力してください" required>
-        <div class="valid-feedback">
-          Looks good!
-        </div>
-      </div>  -->
-  
+      </div>  
   
       <div class="pl-2">
           <input type="submit" value="送信" />

@@ -9,11 +9,11 @@
 
       <div class="form-group">
         <label id="title">名前：</label><br />
-        <input class="form-control" name="name" type="text" value="{{$game->name}}"/>
+        <input class="form-control" name="name" type="text" value="{{$game->name}}" required>
       </div>
 
       <div class="form-group">
-        <input type="file" name="image" accept="image/jpeg,image/gif,image/png">
+        <input type="file" name="image" accept="image/jpeg,image/gif,image/png" required>
       </div>
 
       <input type="hidden" name="_method" value="patch">
