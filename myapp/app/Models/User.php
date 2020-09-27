@@ -42,6 +42,6 @@ class User extends Authenticatable
     ];
 
     public function recruitments() {
-        return $this->hasMany('App\Recruitment');
+        return $this->hasMany('App\Models\Recruitment');
     }
 }

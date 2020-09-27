@@ -20,6 +20,7 @@ Auth::routes();
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/games', [GamesController::class, 'index']);
 Route::get('/game/{game}', [GamesController::class, 'show']);
+Route::get('/recruitment/{recruitment}', [RecruitmentsController::class, 'show']);
 
 
 

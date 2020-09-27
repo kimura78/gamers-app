@@ -30,4 +30,9 @@ class RecruitmentsController extends Controller
         $recruitment->save();
         return redirect("/")->with('flash', 'プレイ募集を作成しました。');
     }
+
+    public function show($id)
+    {
+        return view('recruitments.show', ['recruitment' => Recruitment::findOrFail($id)]);
+    }
 }

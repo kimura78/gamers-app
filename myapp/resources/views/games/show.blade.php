@@ -11,8 +11,6 @@
       <img src="{{ $game->image }}" width="30%" class="rounded-circle">
     </div>
 
-    <a href='/game/{{$game->id}}/recruitments/create'>募集を作成する</a>
-
     <div class="recruitment">
       <h5>
         <i class="fas fa-hands-helping text-danger"></i>
