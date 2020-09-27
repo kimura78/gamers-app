@@ -52,4 +52,12 @@ class RecruitmentsController extends Controller
 
         return view('recruitments.show', ['recruitment' => Recruitment::findOrFail($id)])->with('flash', 'プレイ募集を編集しました。');
     }
+
+    public function destroy($id)
+    {
+        $recruitment = Recruitment::findOrFail($id);
+        $recruitment->delete();
+
+        return redirect("/");
+    }
 }

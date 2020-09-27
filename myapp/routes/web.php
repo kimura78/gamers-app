@@ -33,5 +33,7 @@ Route::group(['middleware' => ['auth']], function() {
   Route::post('/recruitments', [RecruitmentsController::class, 'store']);
   Route::get('/recruitment/{recruitment}/edit', [RecruitmentsController::class, 'edit']);
   Route::patch('/recruitments/{recruitment}', [RecruitmentsController::class, 'update']);
+  Route::delete('/recruitments/{recruitment}', [RecruitmentsController::class, 'destroy']);
+
 
 });

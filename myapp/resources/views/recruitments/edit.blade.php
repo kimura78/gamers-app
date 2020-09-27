@@ -15,10 +15,16 @@
         <input class="form-control" name="start_time" type="text" value="{{$recruitment->start_time}}" required>
       </div>
 
-      <div class="pl-2">
-        <input type="hidden" name="_method" value="patch">
-        <button type="submit" class="btn btn-primary">更新</button>
-      </div>
+
+      <input type="hidden" name="_method" value="patch">
+      <button type="submit" class="btn btn-outline-primary btn-sm">更新</button>
+
+    </form>
+
+    <form action="/recruitments/{{$recruitment->id}}" method="post">
+      @csrf
+      <input type="hidden" name="_method" value="delete">
+      <button type="submit" class="btn btn-outline-danger btn-sm mt-4">この募集を削除する</button>
     </form>
   </div>
 @endsection
