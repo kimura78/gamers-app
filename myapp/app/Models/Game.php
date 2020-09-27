@@ -14,4 +14,8 @@ class Game extends Model
         'name',
         'image',
     ];
+
+    public function recruitments() {
+        return $this->hasMany('App\Recruitment');
+    }
 }
