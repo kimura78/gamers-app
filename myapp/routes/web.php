@@ -39,5 +39,7 @@ Route::group(['middleware' => ['auth']], function() {
   Route::get('/bookmarks', [BookmarksController::class, 'index']);
   Route::get('/bookmarks/create', [BookmarksController::class, 'create']);
   Route::post('/bookmarks', [BookmarksController::class, 'store']);
+  Route::delete('/bookmarks/{bookmark}', [BookmarksController::class, 'destroy']);
+
 
 });

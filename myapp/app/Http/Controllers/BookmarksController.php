@@ -25,4 +25,12 @@ class BookmarksController extends Controller
 
         return redirect('/games');
     }
+
+    public function destroy($id)
+    {
+        $bookmark = Bookmark::findOrFail($id);
+        $bookmark->delete();
+
+        return redirect("/games")->with('flash', 'ブックマークを解除しました。');
+    }
 }

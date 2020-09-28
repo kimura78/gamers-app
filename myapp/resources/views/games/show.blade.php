@@ -11,14 +11,22 @@
     <img src="{{ $game->image }}" width="30%" class="rounded-circle">
   </div>
 
-  <form method="POST" action="/bookmarks" class="mt-3 mb-3">
-    @csrf
-    <input type="hidden" name="game_id" value={{ $game->id }}>
-    <button class="btn btn-outline-success btn-sm"　type="submit">
-      <i class="fas fa-bookmark mr-1"></i>ブックマークに追加
-    </button>
-    <p>{{$bookmark}}</p>
-  </form>
+  @if (!$bookmark)
+    <form method="POST" action="/bookmarks" class="mt-3 mb-3">
+      @csrf
+      <input type="hidden" name="game_id" value={{ $game->id }}>
+      <button class="btn btn-outline-success btn-sm"　type="submit">
+        <i class="fas fa-bookmark mr-1"></i>ブックマークに追加
+      </button>
+      <p>{{$bookmark}}</p>
+    </form>
+  @else
+    <form action="/bookmarks/{{$bookmark[0]->id}}" method="post">
+      @csrf
+      <input type="hidden" name="_method" value="delete">
+      <button type="submit" class="btn btn-outline-danger btn-sm mt-4">ブックマークを解除</button>
+    </form>
+  @endif
 
 
   <br><br>

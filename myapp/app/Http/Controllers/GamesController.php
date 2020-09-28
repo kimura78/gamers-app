@@ -66,7 +66,11 @@ class GamesController extends Controller
 
         //Bookmarkを取得
         $current_user = Auth::user()->id;
-        $bookmark = Bookmark::where('user_id', $current_user)->where('game_id', $id)->gets();
+        $bookmark = Bookmark::where('user_id', $current_user)->where('game_id', $id)->exists();
+
+        if ($bookmark) {
+            $bookmark = Bookmark::where('user_id', $current_user)->where('game_id', $id)->get();
+        }
 
         return view('games.show', ['game' => Game::findOrFail($id)], compact('recruitments', 'tweets', 'bookmark'));
     }
