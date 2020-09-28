@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\GamesController;
 use App\Http\Controllers\RecruitmentsController;
+use App\Http\Controllers\BookmarksController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,6 +35,5 @@ Route::group(['middleware' => ['auth']], function() {
   Route::get('/recruitment/{recruitment}/edit', [RecruitmentsController::class, 'edit']);
   Route::patch('/recruitments/{recruitment}', [RecruitmentsController::class, 'update']);
   Route::delete('/recruitments/{recruitment}', [RecruitmentsController::class, 'destroy']);
-
-
+  Route::get('/bookmarks', [BookmarksController::class, 'index']);
 });
