@@ -30,7 +30,7 @@ Route::group(['middleware' => ['auth']], function() {
   Route::patch('/games/{game}', [GamesController::class, 'update']);
   Route::delete('/games/{game}', [GamesController::class, 'destroy']);
 
-  Route::get('/game/{game}/recruitments/create', [RecruitmentsController::class, 'create']);
+  Route::get('/game/{game}/recruitment/create', [RecruitmentsController::class, 'create']);
   Route::post('/recruitments', [RecruitmentsController::class, 'store']);
   Route::get('/recruitment/{recruitment}/edit', [RecruitmentsController::class, 'edit']);
   Route::patch('/recruitments/{recruitment}', [RecruitmentsController::class, 'update']);

@@ -8,6 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class Bookmark extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'user_id',
+        'game_id',
+    ];
+
+    public static $rules = [
+        'user_id' => 'required|string|max:50',
+        'game_id' => 'required|image',
+    ];
     
     public function user()
     {

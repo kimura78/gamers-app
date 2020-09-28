@@ -18,9 +18,7 @@
         </div>
       </div>  
   
-      <div class="pl-2">
-          <input type="submit" value="送信" />
-      </div>
+      <button type="submit" class="btn btn-primary">作成する</button>
     </form>
   </div>
 @endsection

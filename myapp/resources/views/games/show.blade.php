@@ -17,6 +17,7 @@
     <button class="btn btn-outline-success btn-sm"　type="submit">
       <i class="fas fa-bookmark mr-1"></i>ブックマークに追加
     </button>
+    <p>{{$bookmark}}</p>
   </form>
 
 
@@ -67,16 +68,8 @@
     </div>
 
     <br><br>
-    <div class="row">
 
-    <button class="btn btn-outline-secondary btn-sm ml-2 mr-2" href="/game/{{$game->id}}/edit">ゲーム情報を編集する</button>
-
-    <form action="/game/{{$game->id}}" method="post">
-      @csrf
-      <input type="hidden" name="_method" value="delete">
-      <button type="submit" class="btn btn-outline-danger btn-sm">このゲーム情報を削除する</button>
-    </form>
-
+    <a class="btn btn-outline-secondary btn-sm text-center" href="/game/{{$game->id}}/edit">ゲーム情報を編集する</a>
     </div>
   </div>
 @endsection

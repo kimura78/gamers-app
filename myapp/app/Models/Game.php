@@ -15,6 +15,11 @@ class Game extends Model
         'image',
     ];
 
+    public static $rules = [
+        'name' => 'required|string|max:50',
+        'image' => 'required|image',
+    ];
+
     public function recruitments() {
         return $this->hasMany('App\Models\Recruitment');
     }

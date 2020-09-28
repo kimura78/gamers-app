@@ -20,7 +20,7 @@
       <button type="submit" class="btn btn-outline-primary btn-sm">編集する</button>
     </form>
 
-    <form action="/game/{{$game->id}}" method="post">
+    <form action="/games/{{$game->id}}" method="post">
       {{ csrf_field() }}
       <input type="hidden" name="_method" value="delete">
       <button type="submit" class="btn btn-outline-danger btn-sm mt-4">このゲーム情報を削除する</button>

@@ -16,11 +16,6 @@ class BookmarksController extends Controller
         return view('bookmarks.index', compact('bookmarks'));
     }
 
-    public function create()
-    {
-        return view('bookmarks.create');
-    }
-
     public function store(Request $request)
     {
         $bookmark = new bookmark;
@@ -28,6 +23,6 @@ class BookmarksController extends Controller
         $bookmark->game_id = $request->game_id;
         $bookmark->save();
 
-        return redirect('/game');
+        return redirect('/games');
     }
 }
