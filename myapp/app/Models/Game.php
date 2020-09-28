@@ -16,10 +16,10 @@ class Game extends Model
     ];
 
     public function recruitments() {
-        return $this->hasMany('App\Recruitment');
+        return $this->hasMany('App\Models\Recruitment');
     }
 
     public function bookmarks() {
-        return $this->hasMany('App\Bookmark');
+        return $this->hasMany('App\Models\Bookmark');
     }
 }

@@ -15,4 +15,19 @@ class BookmarksController extends Controller
 
         return view('bookmarks.index', compact('bookmarks'));
     }
+
+    public function create()
+    {
+        return view('bookmarks.create');
+    }
+
+    public function store(Request $request)
+    {
+        $bookmark = new bookmark;
+        $bookmark->user_id = Auth::user()->id;
+        $bookmark->game_id = $request->game_id;
+        $bookmark->save();
+
+        return redirect('/game');
+    }
 }

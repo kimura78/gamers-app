@@ -35,5 +35,9 @@ Route::group(['middleware' => ['auth']], function() {
   Route::get('/recruitment/{recruitment}/edit', [RecruitmentsController::class, 'edit']);
   Route::patch('/recruitments/{recruitment}', [RecruitmentsController::class, 'update']);
   Route::delete('/recruitments/{recruitment}', [RecruitmentsController::class, 'destroy']);
+
   Route::get('/bookmarks', [BookmarksController::class, 'index']);
+  Route::get('/bookmarks/create', [BookmarksController::class, 'create']);
+  Route::post('/bookmarks', [BookmarksController::class, 'store']);
+
 });
