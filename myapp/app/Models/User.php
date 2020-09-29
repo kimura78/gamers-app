@@ -48,4 +48,8 @@ class User extends Authenticatable
     public function bookmarks() {
         return $this->hasMany('App\Models\Bookmark');
     }
+
+    public function comments() {
+        return $this->hasMany('App\Models\Comment');
+    }
 }
