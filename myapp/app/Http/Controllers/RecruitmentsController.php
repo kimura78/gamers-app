@@ -31,7 +31,7 @@ class RecruitmentsController extends Controller
         $recruitment->game_id = $request->game_id;
 
         $recruitment->save();
-        return redirect("/")->with('flash', 'プレイ募集を作成しました。');
+        return redirect("/games")->with('flash', 'プレイ募集を作成しました。');
     }
 
     public function show($id)
@@ -55,7 +55,7 @@ class RecruitmentsController extends Controller
 
         $recruitment->save();
 
-        return view('recruitments.show', ['recruitment' => Recruitment::findOrFail($id)])->with('flash', 'プレイ募集を編集しました。');
+        return redirect("/games")->with('flash', 'プレイ募集を編集しました。');
     }
 
     public function destroy($id)
@@ -63,6 +63,6 @@ class RecruitmentsController extends Controller
         $recruitment = Recruitment::findOrFail($id);
         $recruitment->delete();
 
-        return redirect("/");
+        return redirect("/games");
     }
 }

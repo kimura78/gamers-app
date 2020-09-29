@@ -17,10 +17,9 @@
         <p><i class="far fa-clock mr-2"></i>{{$recruitment->start_time}}</p>
         <small>{{ $recruitment->created_at }}</small>
 
-        <div>
-          <a href="/recruitment/{{$recruitment->id}}/edit">編集する</a>
-          <a href="/game/{{ $recruitment->game->id }}">一覧に戻る</a>
-        </div>
+        @if ($recruitment->user->id == Auth::user()->id)
+          <a class="btn btn-outline-secondary btn-sm text-center" href="/recruitment/{{$recruitment->id}}/edit">編集する</a>
+        @endif
 
       </div>
     </div>
@@ -34,11 +33,13 @@
           <p class="ml-3"><i class="fas fa-pen mr-2 text-success"></i>{{$comment->content}}</p>
           <small>{{$comment->created_at}}</small>
 
-          <form action="/comments/{{$comment->id}}" method="post">
-            @csrf
-            <input type="hidden" name="_method" value="delete">
-            <button type="submit" class="btn btn-outline-danger btn-sm mt-4">コメントを削除</button>
-          </form>
+          @if ($comment->user->id == Auth::user()->id)
+            <form action="/comments/{{$comment->id}}" method="post">
+              @csrf
+              <input type="hidden" name="_method" value="delete">
+              <button type="submit" class="btn btn-outline-danger btn-sm mt-4">コメントを削除</button>
+            </form>
+          @endif
         </div>
       </div>      
       <hr>

@@ -10,15 +10,19 @@ class Game extends Model
     use HasFactory;
 
     protected $fillable = [
-        'user_id',
         'name',
         'image',
+        'user_id',
     ];
 
     public static $rules = [
         'name' => 'required|string|max:50',
         'image' => 'required|image',
     ];
+
+    public function user() {
+        return $this->belongsTo('App\Models\User', 'user_id');
+    }
 
     public function recruitments() {
         return $this->hasMany('App\Models\Recruitment');

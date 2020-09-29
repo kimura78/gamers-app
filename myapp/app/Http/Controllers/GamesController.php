@@ -42,11 +42,10 @@ class GamesController extends Controller
             $name = $request->name;
 
             Game::create([
-            //   'user_id' => \Auth::user()->id,
+              'user_id' => Auth::user()->id,
               'name' => $name,
-              'image' => $fullFilePath
+              'image' => $fullFilePath,
             ]);
-
             return redirect('/games')->with('flash', 'ゲームを作成しました。');
         }
     }

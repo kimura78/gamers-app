@@ -79,7 +79,8 @@
 
     <br><br>
 
-    <a class="btn btn-outline-secondary btn-sm text-center" href="/game/{{$game->id}}/edit">ゲーム情報を編集する</a>
-    </div>
+    @if ($game->user->id == Auth::user()->id)
+      <a class="btn btn-outline-secondary btn-sm text-center" href="/game/{{$game->id}}/edit">ゲーム情報を編集する</a>
+    @endif
   </div>
 @endsection
