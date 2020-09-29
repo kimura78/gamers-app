@@ -16,7 +16,7 @@ class CommentsController extends Controller
         $comment = new comment;
         $comment->content = $request->content;
         $comment->user_id = Auth::user()->id;
-        $comment->recruitmet_id = $request->recruitment_id;
+        $comment->recruitment_id = $request->recruitment_id;
 
         $comment->save();
         return redirect("/")->with('flash', 'コメントを作成しました。');

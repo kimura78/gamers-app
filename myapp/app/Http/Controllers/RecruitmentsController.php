@@ -5,13 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Recruitment;
+use App\Models\Comment;
 use Auth;
 
 class RecruitmentsController extends Controller
 {
     public function index()
     {
-      return view('recruitments.index', compact('recruitments'));
+        return view('recruitments.index', compact('recruitments'));
     }
 
     public function create($game_id)
@@ -35,7 +36,9 @@ class RecruitmentsController extends Controller
 
     public function show($id)
     {
-        return view('recruitments.show', ['recruitment' => Recruitment::findOrFail($id)]);
+        $comments = Comment::where('recruitment_id', $id)->get();
+
+        return view('recruitments.show', ['recruitment' => Recruitment::findOrFail($id)], compact('comments'));
     }
 
     public function edit($id)
