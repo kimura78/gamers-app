@@ -21,6 +21,8 @@ class RecruitmentsController extends Controller
 
     public function store(Request $request)
     {
+        $this->validate($request, Recruitment::$rules);
+
         $recruitment = new recruitment;
         $recruitment->title = $request->title;
         $recruitment->start_time = $request->start_time;

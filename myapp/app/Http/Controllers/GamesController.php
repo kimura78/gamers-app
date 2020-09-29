@@ -7,7 +7,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Game;
 use App\Models\Recruitment;
+use App\Models\Bookmark;
 use Abraham\TwitterOAuth\TwitterOAuth;
+use Auth;
 
 class GamesController extends Controller
 {   
@@ -32,10 +34,10 @@ class GamesController extends Controller
     public function store(Request $request)
     {
         if ($request->file('image')->isValid()) {
+            $this->validate($request, Game::$rules);
 
             $fileName = $request->file('image')->getClientOriginalName();
             $request->file('image')->storeAs('public/gameImages',$fileName);
-
             $fullFilePath = '/storage/gameImages/'.$fileName;
             $name = $request->name;
 
@@ -44,26 +46,32 @@ class GamesController extends Controller
               'name' => $name,
               'image' => $fullFilePath
             ]);
+
+            return redirect('/games')->with('flash', 'ゲームを作成しました。');
         }
-
-        $game = new Game;
-
-        $game->save();
-        return redirect('/games')->with('flash', 'ゲームを作成しました。');
     }
 
     public function show($id)
     {
+        //Tweetを取得
         $twitter = new TwitterOAuth(env('TWITTER_CLIENT_KEY'),
         env('TWITTER_CLIENT_SECRET'),
         env('TWITTER_CLIENT_ID_ACCESS_TOKEN'),
         env('TWITTER_CLIENT_ID_ACCESS_TOKEN_SECRET'));
-
         $tweets_params = ['q' => Game::findOrFail($id)->name ,'count' => '10'];
         $tweets = $twitter->get('search/tweets', $tweets_params)->statuses;
 
+        //Recruitmentを取得
         $recruitments = Recruitment::where('game_id', $id)->get();
-        return view('games.show', ['game' => Game::findOrFail($id)], compact('recruitments', 'tweets'));
+
+        //Bookmarkを取得
+        $bookmark = Bookmark::where('user_id', Auth::user()->id)->where('game_id', $id)->exists();
+
+        if ($bookmark) {
+            $bookmark = Bookmark::where('user_id', Auth::user()->id)->where('game_id', $id)->get();
+        }
+
+        return view('games.show', ['game' => Game::findOrFail($id)], compact('recruitments', 'tweets', 'bookmark'));
     }
 
     public function edit($id)

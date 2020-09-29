@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRecruitmentsTable extends Migration
+class CreateBookmarksTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,8 @@ class CreateRecruitmentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('recruitments', function (Blueprint $table) {
+        Schema::create('bookmarks', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('title', 50);
-            $table->string('start_time', 20);
             $table->integer('user_id')->unsigned();
             $table->integer('game_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
@@ -32,6 +30,6 @@ class CreateRecruitmentsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('recruitments');
+        Schema::dropIfExists('bookmarks');
     }
 }
