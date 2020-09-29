@@ -11,8 +11,7 @@ class BookmarksController extends Controller
 {
     public function index()
     {
-        $bookmarks = Bookmark::all();
-
+        $bookmarks = Bookmark::where('user_id', Auth::user()->id)->get();
         return view('bookmarks.index', compact('bookmarks'));
     }
 
@@ -23,7 +22,7 @@ class BookmarksController extends Controller
         $bookmark->game_id = $request->game_id;
         $bookmark->save();
 
-        return redirect('/games');
+        return redirect('/games')->with('flash', 'ブックマークを登録しました。');
     }
 
     public function destroy($id)

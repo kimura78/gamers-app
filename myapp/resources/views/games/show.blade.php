@@ -8,7 +8,7 @@
   <h1>{{$game->name}}</h1>
 
   <div class="post-image">
-    <img src="{{ $game->image }}" width="30%" class="rounded-circle">
+    <img src="{{ $game->image }}" width="30%">
   </div>
 
   @if (!$bookmark)

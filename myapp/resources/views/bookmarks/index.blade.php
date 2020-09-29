@@ -2,16 +2,18 @@
 
 @section('content')
   <div class="container">
+    <h2>ブックマーク一覧</h2>
+    <br>
+
     @foreach ($bookmarks as $bookmark)
-
-      <h4><a href="/game/{{$bookmark->id}}">{{$bookmark->game->name}}</a></h4>
-      <form action="/bookmark/{{$bookmark->id}}" method="post">
-        @csrf
-        <input type="hidden" name="_method" value="delete">
-        <input type="submit" value="ブックマークを削除">
-      </form>
-
+      <div class="media">
+        <img src="{{ $bookmark->game->image }}" width="80" height="80" class="rounded-circle">
+        <div class="media-body">
+          <h5 class="mt-4 ml-2"><a href="/game/{{$bookmark->game->id}}">{{$bookmark->game->name}}</a></h5>
+        </div>
+      </div>      
       <hr>
     @endforeach
   </div>
 @endsection
+

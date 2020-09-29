@@ -23,10 +23,12 @@
     <br><br>
       
     @foreach ($games as $game)
-      <h4><a href="/game/{{$game->id}}">{{$game->name}}</a></h4>
-      <div class="post-image">
-        <img src="{{ $game->image }}" width="30%"/>
-      </div>
+      <div class="media">
+        <img src="{{ $game->image }}" width="80" height="80" class="rounded-circle">
+        <div class="media-body">
+          <h5 class="mt-4 ml-2"><a href="/game/{{$game->id}}">{{$game->name}}</a></h5>
+        </div>
+      </div>      
       <hr>
     @endforeach
   </div>
