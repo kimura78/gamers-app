@@ -43,5 +43,5 @@ Route::group(['middleware' => ['auth']], function() {
   Route::delete('/bookmarks/{bookmark}', [BookmarksController::class, 'destroy']);
 
   Route::post('/comments', [CommentsController::class, 'store']);
-
+  Route::delete('/comments/{comment}', [CommentsController::class, 'destroy']);
 });

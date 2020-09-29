@@ -19,6 +19,14 @@ class CommentsController extends Controller
         $comment->recruitment_id = $request->recruitment_id;
 
         $comment->save();
-        return redirect("/")->with('flash', 'コメントを作成しました。');
+        return back()->with('flash', 'コメントを作成しました。');
+    }
+
+    public function destroy($id)
+    {
+        $comment = Comment::findOrFail($id);
+        $comment->delete();
+
+        return back()->with('flash', 'コメントを削除しました。');
     }
 }

@@ -13,9 +13,9 @@
     <div class="card">
       <div class="card-body">
         <h4>{{$recruitment->title}}</a></h4>
-        <p class="mt-4"><i class="fas fa-user mr-2"></i>{{ $recruitment->user->name}}</p>
-        <p>{{$recruitment->start_time}}</p>
-        <small><i class="fas fa-pen mr-2"></i>{{ $recruitment->created_at }}</small>
+        <p class="mt-4"><i class="fas fa-user mr-2 text-info"></i>{{ $recruitment->user->name}}</p>
+        <p><i class="far fa-clock mr-2"></i>{{$recruitment->start_time}}</p>
+        <small>{{ $recruitment->created_at }}</small>
 
         <div>
           <a href="/recruitment/{{$recruitment->id}}/edit">編集する</a>
@@ -30,9 +30,15 @@
     @foreach ($comments as $comment)
       <div class="card">
         <div class="card-body">
-          <p><i class="fas fa-user mr-2"></i>{{$comment->user->name}}</p>
-          <p>{{$comment->content}}</p>
-          <small><i class="fas fa-pen mr-2"></i>{{$comment->created_at}}</small>
+          <p><i class="fas fa-user mr-2 text-info"></i>{{$comment->user->name}}</p>
+          <p class="ml-3"><i class="fas fa-pen mr-2 text-success"></i>{{$comment->content}}</p>
+          <small>{{$comment->created_at}}</small>
+
+          <form action="/comments/{{$comment->id}}" method="post">
+            @csrf
+            <input type="hidden" name="_method" value="delete">
+            <button type="submit" class="btn btn-outline-danger btn-sm mt-4">コメントを削除</button>
+          </form>
         </div>
       </div>      
       <hr>

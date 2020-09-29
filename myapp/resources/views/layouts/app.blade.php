@@ -37,11 +37,11 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                        <a class="nav-link" href="/games"><i class="fas fa-search mr-1"></i>GAME</a>
+                        <a class="nav-link" href="/games"><i class="fas fa-search mr-1 text-info"></i>GAME</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="/bookmarks"><i class="fas fa-bookmark mr-1"></i>BOOKMARK</a>
+                            <a class="nav-link" href="/bookmarks"><i class="fas fa-bookmark mr-1 text-success"></i>BOOKMARK</a>
                         </li>
                     </ul>
 

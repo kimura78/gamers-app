@@ -22,7 +22,7 @@ class BookmarksController extends Controller
         $bookmark->game_id = $request->game_id;
         $bookmark->save();
 
-        return redirect('/games')->with('flash', 'ブックマークを登録しました。');
+        return back()->with('flash', 'ブックマークを登録しました。');
     }
 
     public function destroy($id)
@@ -30,6 +30,6 @@ class BookmarksController extends Controller
         $bookmark = Bookmark::findOrFail($id);
         $bookmark->delete();
 
-        return redirect("/games")->with('flash', 'ブックマークを解除しました。');
+        return back()->with('flash', 'ブックマークを解除しました。');
     }
 }
