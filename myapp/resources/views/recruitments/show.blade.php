@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', $recruitment->name)
+@section('title', $recruitment->title)
 
 @section('content')
   <div class="container">

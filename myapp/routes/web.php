@@ -6,6 +6,8 @@ use App\Http\Controllers\GamesController;
 use App\Http\Controllers\RecruitmentsController;
 use App\Http\Controllers\BookmarksController;
 use App\Http\Controllers\CommentsController;
+use App\Http\Controllers\Auth\LoginController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +24,7 @@ Auth::routes();
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/games', [GamesController::class, 'index']);
 Route::get('/game/{game}', [GamesController::class, 'show']);
+Route::get('/login/guest', [LoginController::class, 'guest_login']);
 
 Route::group(['middleware' => ['auth']], function() {
   Route::get('/games/create', [GamesController::class, 'create']);
