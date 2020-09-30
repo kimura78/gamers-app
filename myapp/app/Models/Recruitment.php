@@ -31,7 +31,7 @@ class Recruitment extends Model
         return $this->belongsTo('App\Models\Game');
     }
 
-    public function comments() {
+    public function comment() {
         return $this->hasMany('App\Models\Comment');
     }
 }

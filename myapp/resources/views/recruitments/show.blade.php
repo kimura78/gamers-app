@@ -12,9 +12,12 @@
 
     <div class="card">
       <div class="card-body">
-        <h4>{{$recruitment->title}}</a></h4>
-        <p class="mt-4"><i class="fas fa-user mr-2 text-info"></i>{{ $recruitment->user->name}}</p>
-        <p><i class="far fa-clock mr-2"></i>{{$recruitment->start_time}}</p>
+        <h4><i class="fas fa-hands-helping text-danger"></i>{{$recruitment->title}}</h4>
+        <p class="mt-4"><i class="fas fa-user mr-2 text-info ml-3"></i>{{ $recruitment->user->name}}</p>
+        
+        <p><i class="fas fa-gamepad mr-2 ml-3"></i>{{ $recruitment->game->name }}
+          <i class="far fa-clock mr-2 ml-5"></i>{{$recruitment->start_time}}
+        </p>
         <small>{{ $recruitment->created_at }}</small>
 
         @if ($recruitment->user->id == Auth::user()->id)

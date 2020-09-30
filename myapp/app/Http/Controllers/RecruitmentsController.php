@@ -12,6 +12,7 @@ class RecruitmentsController extends Controller
 {
     public function index()
     {
+        $recruitments = Recruitment::where('user_id', Auth::user()->id)->get();
         return view('recruitments.index', compact('recruitments'));
     }
 

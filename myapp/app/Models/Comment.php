@@ -24,7 +24,7 @@ class Comment extends Model
         return $this->belongsTo('App\Models\User', 'user_id');
     }
 
-    public function recruitments() {
+    public function recruitment() {
         return $this->belongsTo('App\Models\Recruitment');
     }
 }
