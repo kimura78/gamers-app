@@ -21,7 +21,7 @@
     </form>
 
     <form action="/games/{{$game->id}}" method="post">
-      {{ csrf_field() }}
+      @csrf
       <input type="hidden" name="_method" value="delete">
       <button type="submit" class="btn btn-outline-danger btn-sm mt-4">このゲーム情報を削除する</button>
     </form>

@@ -5,13 +5,15 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Recruitment;
+use App\Models\Comment;
 use Auth;
 
 class RecruitmentsController extends Controller
 {
     public function index()
     {
-      return view('recruitments.index', compact('recruitments'));
+        $recruitments = Recruitment::where('user_id', Auth::user()->id)->get();
+        return view('recruitments.index', compact('recruitments'));
     }
 
     public function create($game_id)
@@ -30,12 +32,14 @@ class RecruitmentsController extends Controller
         $recruitment->game_id = $request->game_id;
 
         $recruitment->save();
-        return redirect("/")->with('flash', 'プレイ募集を作成しました。');
+        return redirect("/games")->with('flash', 'プレイ募集を作成しました。');
     }
 
     public function show($id)
     {
-        return view('recruitments.show', ['recruitment' => Recruitment::findOrFail($id)]);
+        $comments = Comment::where('recruitment_id', $id)->get();
+
+        return view('recruitments.show', ['recruitment' => Recruitment::findOrFail($id)], compact('comments'));
     }
 
     public function edit($id)
@@ -52,7 +56,7 @@ class RecruitmentsController extends Controller
 
         $recruitment->save();
 
-        return view('recruitments.show', ['recruitment' => Recruitment::findOrFail($id)])->with('flash', 'プレイ募集を編集しました。');
+        return redirect("/games")->with('flash', 'プレイ募集を編集しました。');
     }
 
     public function destroy($id)
@@ -60,6 +64,6 @@ class RecruitmentsController extends Controller
         $recruitment = Recruitment::findOrFail($id);
         $recruitment->delete();
 
-        return redirect("/");
+        return redirect("/games")->with('flash', 'プレイ募集を削除しました。');
     }
 }

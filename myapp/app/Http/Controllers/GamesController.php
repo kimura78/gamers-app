@@ -33,20 +33,24 @@ class GamesController extends Controller
 
     public function store(Request $request)
     {
+        if (!$request->file('image')) {
+            return '画像を選択してください';
+        }
+
         if ($request->file('image')->isValid()) {
             $this->validate($request, Game::$rules);
 
             $fileName = $request->file('image')->getClientOriginalName();
             $request->file('image')->storeAs('public/gameImages',$fileName);
-            $fullFilePath = '/storage/gameImages/'.$fileName;
+            $filePath = '/storage/gameImages/'.$fileName;
             $name = $request->name;
 
-            Game::create([
-            //   'user_id' => \Auth::user()->id,
-              'name' => $name,
-              'image' => $fullFilePath
-            ]);
+            $game = new game;
+            $game->user_id = Auth::user()->id;
+            $game->name = $name;
+            $game->image = $filePath;
 
+            $game->save();
             return redirect('/games')->with('flash', 'ゲームを作成しました。');
         }
     }
@@ -65,12 +69,17 @@ class GamesController extends Controller
         $recruitments = Recruitment::where('game_id', $id)->get();
 
         //Bookmarkを取得
-        $bookmark = Bookmark::where('user_id', Auth::user()->id)->where('game_id', $id)->exists();
+        if (Auth::check()) {
+            $bookmark = Bookmark::where('user_id', Auth::user()->id)->where('game_id', $id)->exists();
 
-        if ($bookmark) {
-            $bookmark = Bookmark::where('user_id', Auth::user()->id)->where('game_id', $id)->get();
+            if ($bookmark) {
+                $bookmark = Bookmark::where('user_id', Auth::user()->id)->where('game_id', $id)->get();
+            }
+
+            return view('games.show', ['game' => Game::findOrFail($id)], compact('recruitments', 'tweets', 'bookmark'));
         }
 
+        $bookmark = '';
         return view('games.show', ['game' => Game::findOrFail($id)], compact('recruitments', 'tweets', 'bookmark'));
     }
 
@@ -83,25 +92,24 @@ class GamesController extends Controller
 
     public function update(Request $request, $id)
     {
+        return 'この機能は準備中です';
         // if ($request->file('image')->isValid()) {
+        //     $this->validate($request, Game::$rules);
 
         //     $fileName = $request->file('image')->getClientOriginalName();
         //     $request->file('image')->storeAs('public/gameImages',$fileName);
-
-        //     $fullFilePath = '/storage/gameImages/'.$fileName;
+        //     $filePath = '/storage/gameImages/'.$fileName;
         //     $name = $request->name;
 
-        //     Game::create([
-        //     //   'user_id' => \Auth::user()->id,
-        //       'name' => $name,
-        //       'image' => $fullFilePath
-        //     ]);
-        // }
-        $game = Game::findOrFail($id);
-        $game->name = $request->name;
-        $game->save();
+        //     $game = Game::findOrFail($id);
 
-        return redirect("/games")->with('flash', 'ゲームを更新しました。');
+        //     $game->user_id = Auth::user()->id;
+        //     $game->name = $name;
+        //     $game->image = $filePath;
+
+        //     $game->save();
+        //     return redirect("/games")->with('flash', 'ゲームを更新しました。');
+        // }
     }
 
     public function destroy($id)

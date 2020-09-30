@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'ブックマーク一覧')
+
 @section('content')
   <div class="container">
     <h2>ブックマーク一覧</h2>

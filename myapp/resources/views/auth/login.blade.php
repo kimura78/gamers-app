@@ -39,6 +39,10 @@
                             </div>
                         </div>
 
+                        <div class="form-group text-center">
+                            <a class="btn btn-primary" href="/login/guest">ゲストユーザーでログイン</a>
+                        </div>
+
                         <div class="form-group row">
                             <div class="col-md-6 offset-md-4">
                                 <div class="form-check">

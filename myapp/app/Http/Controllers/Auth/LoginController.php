@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Auth;
+
 
 class LoginController extends Controller
 {
@@ -37,4 +39,15 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+    public function guest_login()
+    {
+        if (Auth::attempt(['email' => env('GUEST_USER_EMAIL'), 'password' => env('GUEST_USER_PASSWORD')])) {
+            return redirect('/')->with('flash', 'ゲストユーザーでログインしました');
+        }
+
+        return redirect('/')->with('flash', 'ゲストユーザーが存在していません');
+    }
+
+    
 }

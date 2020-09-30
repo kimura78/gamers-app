@@ -41,11 +41,19 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function games() {
+        return $this->hasMany('App\Models\Game');
+    }
+
     public function recruitments() {
         return $this->hasMany('App\Models\Recruitment');
     }
 
     public function bookmarks() {
         return $this->hasMany('App\Models\Bookmark');
+    }
+
+    public function comments() {
+        return $this->hasMany('App\Models\Comment');
     }
 }

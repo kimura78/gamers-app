@@ -5,6 +5,9 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\GamesController;
 use App\Http\Controllers\RecruitmentsController;
 use App\Http\Controllers\BookmarksController;
+use App\Http\Controllers\CommentsController;
+use App\Http\Controllers\Auth\LoginController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -21,7 +24,7 @@ Auth::routes();
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/games', [GamesController::class, 'index']);
 Route::get('/game/{game}', [GamesController::class, 'show']);
-Route::get('/recruitment/{recruitment}', [RecruitmentsController::class, 'show']);
+Route::get('/login/guest', [LoginController::class, 'guest_login']);
 
 Route::group(['middleware' => ['auth']], function() {
   Route::get('/games/create', [GamesController::class, 'create']);
@@ -30,6 +33,8 @@ Route::group(['middleware' => ['auth']], function() {
   Route::patch('/games/{game}', [GamesController::class, 'update']);
   Route::delete('/games/{game}', [GamesController::class, 'destroy']);
 
+  Route::get('/recruitments', [RecruitmentsController::class, 'index']);
+  Route::get('/recruitment/{recruitment}', [RecruitmentsController::class, 'show']);
   Route::get('/game/{game}/recruitment/create', [RecruitmentsController::class, 'create']);
   Route::post('/recruitments', [RecruitmentsController::class, 'store']);
   Route::get('/recruitment/{recruitment}/edit', [RecruitmentsController::class, 'edit']);
@@ -41,5 +46,6 @@ Route::group(['middleware' => ['auth']], function() {
   Route::post('/bookmarks', [BookmarksController::class, 'store']);
   Route::delete('/bookmarks/{bookmark}', [BookmarksController::class, 'destroy']);
 
-
+  Route::post('/comments', [CommentsController::class, 'store']);
+  Route::delete('/comments/{comment}', [CommentsController::class, 'destroy']);
 });
