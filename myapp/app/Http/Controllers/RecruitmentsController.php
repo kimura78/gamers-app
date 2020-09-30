@@ -63,6 +63,6 @@ class RecruitmentsController extends Controller
         $recruitment = Recruitment::findOrFail($id);
         $recruitment->delete();
 
-        return redirect("/games");
+        return redirect("/games")->with('flash', 'プレイ募集を削除しました。');
     }
 }

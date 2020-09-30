@@ -52,8 +52,8 @@
                   <i class="fas fa-hands-helping text-danger"></i>
                   <a href="/recruitment/{{$recruitment->id}}">{{$recruitment->title}}</a>
                 </h5>
-                <p>日時：{{$recruitment->start_time}}</p>
-                <p>投稿者：{{ $recruitment->user->name}}</p>
+                <p><i class="far fa-clock mr-2"></i>{{$recruitment->start_time}}</p>
+                <p><i class="fas fa-user mr-2 text-info"></i>{{ $recruitment->user->name}}</p>
               </div>
             </div>
             <br>

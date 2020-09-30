@@ -18,8 +18,8 @@ class CreateCommentsTable extends Migration
             $table->string('content', 300);
             $table->integer('user_id')->unsigned();
             $table->integer('recruitment_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('recruitment_id')->references('id')->on('recruitments');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('recruitment_id')->references('id')->on('recruitments')->onDelete('cascade');
             $table->timestamps();
         });
     }
