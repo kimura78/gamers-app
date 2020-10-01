@@ -37,7 +37,7 @@ class RecruitmentsController extends Controller
 
     public function show($id)
     {
-        $comments = Comment::where('recruitment_id', $id)->get();
+        $comments = Comment::where('recruitment_id', $id)->paginate(20);
 
         return view('recruitments.show', ['recruitment' => Recruitment::findOrFail($id)], compact('comments'));
     }

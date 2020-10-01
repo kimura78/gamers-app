@@ -33,20 +33,22 @@
       <div class="card">
         <div class="card-body">
           <p><i class="fas fa-user mr-2 text-info"></i>{{$comment->user->name}}</p>
-          <p class="ml-3"><i class="fas fa-pen mr-2 text-success"></i>{{$comment->content}}</p>
+          <p class="ml-3">{{$comment->content}}</p>
           <small>{{$comment->created_at}}</small>
 
           @if ($comment->user->id == Auth::user()->id)
             <form action="/comments/{{$comment->id}}" method="post">
               @csrf
               <input type="hidden" name="_method" value="delete">
-              <button type="submit" class="btn btn-outline-danger btn-sm mt-4">コメントを削除</button>
+              <button type="submit" class="btn btn-outline-danger btn-sm">コメントを削除</button>
             </form>
           @endif
         </div>
       </div>      
       <hr>
     @endforeach
+
+    {!! $comments->render() !!}
 
     <div>
       <form method="POST" action="/comments" class="mt-3 mb-3">

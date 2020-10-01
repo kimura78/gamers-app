@@ -17,23 +17,24 @@
       <img src="{{ $game->image }}" width="30%">
     </div>
 
-    @if (!$bookmark)
-      <form method="POST" action="/bookmarks" class="mt-3 mb-3">
-        @csrf
-        <input type="hidden" name="game_id" value={{ $game->id }}>
-        <button class="btn btn-outline-success btn-sm"　type="submit">
-          <i class="fas fa-bookmark mr-1"></i>ブックマークに追加
-        </button>
-        <p>{{$bookmark}}</p>
-      </form>
-    @else
-      <form action="/bookmarks/{{$bookmark[0]->id}}" method="post">
-        @csrf
-        <input type="hidden" name="_method" value="delete">
-        <button type="submit" class="btn btn-outline-danger btn-sm mt-4">ブックマークを解除</button>
-      </form>
+    @if (Auth::check())
+      @if (!$bookmark)
+        <form method="POST" action="/bookmarks" class="mt-3 mb-3">
+          @csrf
+          <input type="hidden" name="game_id" value={{ $game->id }}>
+          <button class="btn btn-outline-success btn-sm"　type="submit">
+            <i class="fas fa-bookmark mr-1"></i>ブックマークに追加
+          </button>
+          <p>{{$bookmark}}</p>
+        </form>
+      @else
+        <form action="/bookmarks/{{$bookmark[0]->id}}" method="post">
+          @csrf
+          <input type="hidden" name="_method" value="delete">
+          <button type="submit" class="btn btn-outline-danger btn-sm mt-4">ブックマークを解除</button>
+        </form>
+      @endif 
     @endif
-
 
     <br><br>
 
@@ -56,7 +57,7 @@
                 <p><i class="fas fa-user mr-2 text-info"></i>{{ $recruitment->user->name}}</p>
               </div>
             </div>
-            <br>
+
           @endforeach
         </div>
       </div>
@@ -79,8 +80,13 @@
 
     <br><br>
 
-    @if ($game->user->id == Auth::user()->id)
-      <a class="btn btn-outline-secondary btn-sm text-center" href="/game/{{$game->id}}/edit">ゲーム情報を編集する</a>
+    {!! $recruitments->render() !!}
+
+
+    @if (Auth::check())
+      @if ($game->user->id == Auth::user()->id)
+        <a class="btn btn-outline-secondary btn-sm text-center" href="/game/{{$game->id}}/edit">ゲーム情報を編集する</a>
+      @endif 
     @endif
   </div>
 @endsection

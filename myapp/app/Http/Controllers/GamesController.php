@@ -59,14 +59,14 @@ class GamesController extends Controller
     {
         //Tweetを取得
         $twitter = new TwitterOAuth(env('TWITTER_CLIENT_KEY'),
-        env('TWITTER_CLIENT_SECRET'),
-        env('TWITTER_CLIENT_ID_ACCESS_TOKEN'),
-        env('TWITTER_CLIENT_ID_ACCESS_TOKEN_SECRET'));
+                                    env('TWITTER_CLIENT_SECRET'),
+                                    env('TWITTER_CLIENT_ID_ACCESS_TOKEN'),
+                                    env('TWITTER_CLIENT_ID_ACCESS_TOKEN_SECRET'));
         $tweets_params = ['q' => Game::findOrFail($id)->name ,'count' => '10'];
         $tweets = $twitter->get('search/tweets', $tweets_params)->statuses;
 
         //Recruitmentを取得
-        $recruitments = Recruitment::where('game_id', $id)->get();
+        $recruitments = Recruitment::where('game_id', $id)->paginate(10);
 
         //Bookmarkを取得
         if (Auth::check()) {
@@ -79,7 +79,7 @@ class GamesController extends Controller
             return view('games.show', ['game' => Game::findOrFail($id)], compact('recruitments', 'tweets', 'bookmark'));
         }
 
-        $bookmark = '';
+        $bookmark = 1;
         return view('games.show', ['game' => Game::findOrFail($id)], compact('recruitments', 'tweets', 'bookmark'));
     }
 

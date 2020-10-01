@@ -31,5 +31,7 @@
       </div>      
       <hr>
     @endforeach
+  {!! $games->appends(['keyword'=>$keyword])->render() !!}
+
   </div>
 @endsection
