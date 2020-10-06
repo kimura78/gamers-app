@@ -14,7 +14,7 @@
     <h1>{{$game->name}}</h1>
 
     <div class="post-image">
-      <img src="{{ $game->image }}" width="30%">
+      <img src="{{ $game->image }}" width="50%">
     </div>
 
     @if (Auth::check())
@@ -40,7 +40,7 @@
 
     <div class="row">
       <div class="col-sm">
-        <div class="recruitment">
+        <div class="recruitment mt-3">
           <h5>
             <i class="fas fa-hands-helping text-danger"></i>
             <a href='/game/{{$game->id}}/recruitment/create'>募集を作成する</a>
@@ -63,7 +63,7 @@
       </div>
 
       <div class="col-sm">
-        <div class="tweets text-center">
+        <div class="tweets text-center mt-3">
           <h5><i class="fab fa-twitter mr-2 text-primary"></i>このゲームに関するツイート</h5>
     
             @foreach ($tweets as $tweet)
