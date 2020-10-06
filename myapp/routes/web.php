@@ -19,14 +19,14 @@ use App\Http\Controllers\Auth\LoginController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Auth::routes();
+Auth::routes(['verify' => true]);
 
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/games', [GamesController::class, 'index']);
 Route::get('/game/{game}', [GamesController::class, 'show']);
 Route::get('/login/guest', [LoginController::class, 'guest_login']);
 
-Route::group(['middleware' => ['auth']], function() {
+Route::group(['middleware' => ['verified']], function() {
   Route::get('/games/create', [GamesController::class, 'create']);
   Route::post('/games', [GamesController::class, 'store']);
   Route::get('/game/{game}/edit', [GamesController::class, 'edit']);
