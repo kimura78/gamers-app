@@ -1,18 +1,27 @@
 @extends('layouts.app')
 
 @section('content')
-  <div class="container">
-    @if(Session::has('flash'))
-      <div class="alert alert-success" role="alert">
-        {{ session('flash') }}
-      </div>
-    @endif
-
-    <div class="text-center mt-5">
-			<h1 class="display-4">GAMERS</h1>
-			<i class="fas fa-gamepad fa-5x"></i>
-			<p class="mt-3">ゲームをプレイする仲間を募集しましょう！</p>
-      <a class="btn btn-outline-secondary" href="/games">ゲームを検索</a>
+  <div class="top-page">
+    <div class="col-12 d-none d-md-block">
+      <img class="card-img" src="{{ secure_asset('images/top-1.jpg') }}">
     </div>
-	</div>
+
+    <div class="col-12 d-md-none">
+      <img class="card-img" src="{{ secure_asset('images/top-2.png') }}">
+    </div>
+
+
+    <div class="card-img-overlay text-white text-center mt-5">
+      @if(Session::has('flash'))
+        <div class="alert alert-success" role="alert">
+          {{ session('flash') }}
+        </div>
+      @endif
+
+      <h1 class="display-4 mt-5">GAMERS</h1>
+      <p class="mt-3">ゲームをプレイする仲間を募集しましょう！</p>
+      <a class="btn btn-outline-warning" href="/games">ゲームを検索</a>
+    </div>
+  </div>
+
 @endsection
