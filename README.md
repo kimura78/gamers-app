@@ -8,7 +8,7 @@ Laravelで作成しました。
 
 https://www.gamers-app.tk/
 
-![スクリーンショット 2020-10-07 0 59 29](https://user-images.githubusercontent.com/53544498/95226903-6e7feb80-0838-11eb-9491-6dbdd388830f.png)
+![スクリーンショット 2020-10-07 10 47 11](https://user-images.githubusercontent.com/53544498/95278162-88e2b500-088a-11eb-930e-e96f40b1b95d.png)
 
 
 ## :pencil2: 機能一覧
