@@ -27,12 +27,14 @@ https://www.gamers-app.tk/
 
 * 部分検索機能
 
+* https化
+
 
 ## :computer: 開発環境
 
 * Dockerで構築
 
-* AWSにデプロイ(EC2, RDS, ACM, IAM)
+* AWSにデプロイ(EC2, RDS, ALB)
 
 * DB : Mysql
 
