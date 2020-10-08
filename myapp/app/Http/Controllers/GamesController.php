@@ -33,10 +33,6 @@ class GamesController extends Controller
 
     public function store(Request $request)
     {
-        if (!$request->file('image')) {
-            return '画像を選択してください';
-        }
-
         if ($request->file('image')->isValid()) {
             $this->validate($request, Game::$rules);
 
@@ -93,29 +89,30 @@ class GamesController extends Controller
     public function update(Request $request, $id)
     {
         return 'この機能は準備中です';
-        // if ($request->file('image')->isValid()) {
-        //     $this->validate($request, Game::$rules);
+        // $this->validate($request, Game::$rules);
+        // $game = Game::findOrFail($id);
 
-        //     $fileName = $request->file('image')->getClientOriginalName();
-        //     $request->file('image')->storeAs('public/gameImages',$fileName);
-        //     $filePath = '/storage/gameImages/'.$fileName;
-        //     $name = $request->name;
 
-        //     $game = Game::findOrFail($id);
+        // $fileName = $request->file('image')->getClientOriginalName();
+        // $request->file('image')->storeAs('public/gameImages',$fileName);
+        // $filePath = '/storage/gameImages/'.$fileName;
+        // $name = $request->name;
 
-        //     $game->user_id = Auth::user()->id;
-        //     $game->name = $name;
-        //     $game->image = $filePath;
+        // $game->user_id = Auth::user()->id;
+        // $game->name = $name;
+        // $game->image = $filePath;
 
-        //     $game->save();
-        //     return redirect("/games")->with('flash', 'ゲームを更新しました。');
-        // }
+        // $game->save();
+        // return redirect("/games")->with('flash', 'ゲームを更新しました。');
+
     }
 
     public function destroy($id)
     {
         $game = Game::findOrFail($id);
+
         $game->delete();
+        Storage::delete('$game->image');
 
         return redirect("/games")->with('flash', 'ゲームを削除しました。');
     }
