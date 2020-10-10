@@ -21,9 +21,8 @@
 
           <p><i class="fas fa-user mr-2 text-info ml-3"></i>{{ $recruitment->user->name}}</p>
 
-          <p><i class="fas fa-gamepad mr-2 ml-3"></i>{{ $recruitment->game->name }}
-            <i class="far fa-clock mr-2 ml-5"></i>{{$recruitment->start_time}}
-          </p>
+          <p><i class="fas fa-gamepad mr-2 ml-3"></i>{{ $recruitment->game->name }}</p>
+          <p><i class="far fa-clock mr-2 ml-5"></i>{{$recruitment->start_time}}</p>
         </div>
       </div>
       <br>
