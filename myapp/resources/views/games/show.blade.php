@@ -85,7 +85,11 @@
 
     @if (Auth::check())
       @if ($game->user->id == Auth::user()->id)
-        <a class="btn btn-outline-secondary btn-sm text-center" href="/game/{{$game->id}}/edit">ゲーム情報を編集する</a>
+        <form action="/games/{{$game->id}}" method="post">
+          @csrf
+          <input type="hidden" name="_method" value="delete">
+          <button type="submit" class="btn btn-outline-danger btn-sm mt-4">このゲーム情報を削除する</button>
+        </form>
       @endif 
     @endif
   </div>
