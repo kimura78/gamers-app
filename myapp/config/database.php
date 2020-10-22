@@ -43,7 +43,7 @@ return [
             'foreign_key_constraints' => env('DB_FOREIGN_KEYS', true),
         ],
         
-        'circleci' => [
+        'circle_test' => [
             'driver' => 'mysql',
             'host' => '127.0.0.1',
             'port' => '3306',
