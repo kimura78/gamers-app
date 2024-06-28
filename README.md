@@ -4,8 +4,6 @@ GAMERSは、ゲーム好きの方に向けたSNSサービスです。
 一緒にプレイするユーザーを募ったり、ゲームに関する最新のTweetを手軽に閲覧することが可能です。
 Laravelで作成しました。
 
-## :earth_asia: URL
-
 ![スクリーンショット 2020-10-07 10 47 11](https://user-images.githubusercontent.com/53544498/95278162-88e2b500-088a-11eb-930e-e96f40b1b95d.png)
 
 
